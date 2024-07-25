@@ -12,7 +12,3 @@ function fetchCube() {
         })
         .catch(error => console.error('Error fetching cube data:', error));
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    fetchCube();
-});
