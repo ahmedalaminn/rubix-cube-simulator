@@ -1,5 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
     fetchCube();
+
+    document.querySelectorAll('button').forEach(button => {
+        button.onclick = function() {
+            move = button.dataset.move;
+            console.log(move);
+
+            fetch('/get_move', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ move: move }) // converting move to json in order to have it sent
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                displayCube(data.cube);  
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    });
 });
 
 function fetchCube() {

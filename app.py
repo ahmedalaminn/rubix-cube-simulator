@@ -1,14 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 
-    # def rotate(movement):
+app = Flask(__name__)  # flask --app app.py --debug run <--- updates app when reloaded
 
-    # 18 possible rotations: 
-    # Up: U, U', U^2
-    # Down: D, D', D^2
-    # Left: L, L', L^2+
-    # Right: R, R', R^2
-    # Front: F, F', F^2
-    # Back: B, B', B^2
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 cube = [ # 0 for white, 1 for yellow, 2 for orange, 3 for green, 4 for red, 5 for blue 
             0, 0, 0, 0, 0, 0, 0, 0, 0, 
@@ -19,15 +15,19 @@ cube = [ # 0 for white, 1 for yellow, 2 for orange, 3 for green, 4 for red, 5 fo
             5, 5, 5, 5, 5, 5, 5, 5, 5
         ]
 
-app = Flask(__name__)
-
-@app.route("/")
-def index(): 
-    return render_template("index.html")
-
-@app.route("/get_cube")
+@app.route("/get_cube") # default cube
 def get_cube():
-    return jsonify(cube = cube)
+    return jsonify(cube=cube)
+
+@app.route('/get_move', methods=['POST'])
+def get_move():
+    data = request.json
+    move = data.get('move')
+    return jsonify(cube=update_cube(move))
+
+def update_cube(move):
+    # Updates the cube based on the move 
+    return cube
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug=True)

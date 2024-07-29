@@ -1,11 +1,39 @@
 .container{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.buttons{
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
+.buttons .row button{
+    background-color: #4CAF50; /* Green background */
+    border: none; /* Remove border */
+    color: white; /* White text */
+    padding: 12px 24px; /* Padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Inline display */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margin between buttons */
+    cursor: pointer; /* Pointer/hand icon */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+.buttons .row button:hover{
+    background-color: #45a049; /* Darker green background on hover */
+}
+.faces{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
 .row {
     display: flex;
-    justify-content: center;
+    margin-left: 150px;
 }
 .face-grid {
     display: grid;
