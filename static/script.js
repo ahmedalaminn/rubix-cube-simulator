@@ -42,7 +42,8 @@ function displayCube(cube){
 
     for (let i = 0; i < colors.length; i++){
         const faceGrid = document.getElementById(colors[i]);
-
+        faceGrid.innerHTML = '';
+        
         for (let j = 0; j < 9; j++){
             const cell = document.createElement('div');
             const index = i * 9 + j;
